@@ -14,7 +14,7 @@ Not strong number*/
 int main(){
 
     //Taking user input and creating a copy
-	int ip, temp, n, sum, i, z=1;
+	int ip, temp, n, sum = 0, i, z;
 	printf("Enter a number: ");
 	scanf("%d", &ip);
 	temp = ip;
@@ -23,14 +23,13 @@ int main(){
 	while(temp > 0){
 	n = temp % 10;
 	temp /= 10;
-	for(i = 1; i <= n; i++){
+	for(i = 1, z = 1; i <= n; i++){
 		z *= i;
 		}
     sum += z;
-    z = 1;
 	}
 
-    printf("factorial sum value = %d\n", sum);
+    //printf("factorial sum value = %d\n", sum);
 
 	if(sum == ip)
 		printf("%d is a strong number!\n", ip);
