@@ -24,13 +24,9 @@ int main(){
     int ip;
     printf("Enter a year: ");
     scanf("%d", &ip);
-    if(ip%4 == 0 && ip%400 == 0 && ip%100 == 0){
+    if(ip%4 == 0 && (ip%400 == 0 || ip%100 != 0)){
         printf("The year is a leap year\n");
     }
-    else if(ip%4 ==0 && ip%100 == 0 && ip%400!=0){
-        printf("The year is not a leap year\n");
-    }
-    
     else{
         printf("The year is not a leap year\n");
     }
