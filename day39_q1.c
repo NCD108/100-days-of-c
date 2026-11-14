@@ -1,3 +1,4 @@
+
 /*Q77: Check if the elements on the diagonal of a matrix are distinct.
 Sample Test Cases:
 Input 1:
@@ -7,38 +8,49 @@ Input 1:
 7 8 1
 Output 1:
 False
-
 Input 2:
 3 3
 1 2 3
 4 5 6
 7 8 9
 Output 2:
-True*/
+True
+*/
 #include <stdio.h>
 int main(){
-    int side, flag = 0, i, j;
-    printf("Enter size of square matrix: ");
-    scanf("%d", &side);
-    int matrix[side][side];
-    printf("Enter the elements of the matrix: \n");
-    for(i = 0; i < side; i++){
-        for(j = 0; j < side; j++){
-            printf("Enter element (%d, %d): ", i, j);
+    int rows, cols;
+    scanf("%d %d", &rows, &cols);
+
+    int matrix[rows][cols];
+
+    // Input matrix elements
+    for (int i = 0; i < rows; i++){
+        for (int j = 0; j < cols; j++){
             scanf("%d", &matrix[i][j]);
         }
     }
-    for(i = 0; i < side; i++){
-        for(j = 0; j < side; i++){
-            if(matrix[i][i] == matrix[j][j]){
-                flag = 1;
+
+    int distinct = 1;
+
+    // Check whether diagonal elements are distinct
+    int diagonal = (rows < cols) ? rows : cols;
+
+    for (int i = 0; i < diagonal; i++){
+        for (int j = i + 1; j < diagonal; j++){
+            if (matrix[i][i] == matrix[j][j])
+            {
+                distinct = 0;
                 break;
             }
         }
+
+        if (distinct == 0){
+            break;
+        }
     }
-    if(flag == 0)
-        printf("All elements are distinct!\n");
+    if (distinct)
+        printf("True");
     else
-        printf("All elements are not distinct.\n");
+        printf("False");
     return 0;
 }
